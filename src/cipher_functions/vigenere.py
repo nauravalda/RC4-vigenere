@@ -28,8 +28,8 @@ def decrypt_vigenere(ciphertext, key):
     return plaintext
 
 # test
-# plaintext = "halooooo"
-# key = "heru"
-# ciphertext = encrypt_vigenere(plaintext, key)
-# print(ciphertext)
-# print(decrypt_vigenere(ciphertext, key))
+plaintext = "halo"
+key = "pa"
+ciphertext = encrypt_vigenere(plaintext, key)
+print(ciphertext)
+print(encrypt_vigenere("waao", "pa"))
