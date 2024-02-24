@@ -18,12 +18,16 @@ def vigenere_cipher():
         key = request.form["key"]
         print(key)
         inputtext = request.form["inputtext"]
-        # file = request.files["file"]
-        # if file:
-        #     file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-        #     file.save(file_path)
-        #     with open(file_path, 'r') as f:
-        #         inputtext = f.read()
+        file = request.files["file"]
+        if file:
+            UPLOAD_FOLDER = 'uploads'
+            if not os.path.exists(UPLOAD_FOLDER):
+                os.makedirs(UPLOAD_FOLDER)
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            
+            file.save(file_path)
+            with open(file_path, 'r') as f:
+                inputtext = f.read()
         if request.form["options"] == "e":
             from cipher_functions.vigenere import encrypt_vigenere
             res = encrypt_vigenere(inputtext, key)

@@ -28,8 +28,14 @@ def decrypt_vigenere(ciphertext, key):
     return plaintext
 
 # test
-plaintext = "halo"
-key = "pa"
-ciphertext = encrypt_vigenere(plaintext, key)
-print(ciphertext)
-print(encrypt_vigenere("waao", "pa"))
+# file_path = "D:/Coll Things/Semester 6/KRIPTO/classic-ciphers/src/cipher_functions/test.txt"
+# file = open(file_path, "r")
+# text = file.read()
+# file.close()
+# print(text)
+# print(encrypt_vigenere(text, "pa"))
+# print(decrypt_vigenere(encrypt_vigenere(text, "pa"), "pa"))
+
+
+
+
