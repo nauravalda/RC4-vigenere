@@ -11,7 +11,7 @@ def playfairStringReplace(sentence = "", isKey = False):
     return "".join(dict.fromkeys(substitution)) if isKey else substitution
 
 
-def getPlayfairKeyMatrix(sentence = ""):
+def playfairKeyMatrix(sentence = ""):
     
     letterList = playfairStringReplace(sentence,True)
 
@@ -62,11 +62,13 @@ def playfairBigramTransform(bigram, keyMatrix, encrypt):
 
     return
 
+# Playfair cipher
+# Character limit: only alphabetic characters, converted to upper case. J character converted to I
 def playfair(plaintext, key, encrypt = True):
 
     plainList = [c for c in playfairStringReplace(plaintext)]
 
-    keyMatrix = getPlayfairKeyMatrix(key)
+    keyMatrix = playfairKeyMatrix(key)
 
     startList = plainList.copy()
     tempList = []
