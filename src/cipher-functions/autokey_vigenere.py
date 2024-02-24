@@ -1,10 +1,14 @@
-def encrypt_vigenere(plaintext, key):
+def encrypt_autokey_vigenere(plaintext, key):
+    # Encrypt a text using autokey vigenere cipher
+    ciphertext = ""
     key = key.lower()
     key_len = len(key)
     plaintext = ''.join(filter(str.isalpha, plaintext.lower()))
-    ciphertext = ''
     for i, char in enumerate(plaintext):
-        key_char = key[i % key_len]
+        if i < key_len:
+            key_char = key[i]
+        else:
+            key_char = plaintext[i - key_len]
         shift = (ord(key_char) - ord('a')) % 26
         # remove non-alphabet characters
         if char.isalpha():
@@ -13,14 +17,17 @@ def encrypt_vigenere(plaintext, key):
             ciphertext += encrypted_char
     return ciphertext
 
-def decrypt_vigenere(ciphertext, key):
-    # Decrypt a text
+def decrypt_autokey_vigenere(ciphertext, key):
+    # Decrypt a text using autokey vigenere cipher
     plaintext = ""
     key = key.lower()
     key_len = len(key)
     ciphertext = ''.join(filter(str.isalpha, ciphertext.lower()))
     for i, char in enumerate(ciphertext):
-        key_char = key[i % key_len]
+        if i < key_len:
+            key_char = key[i]
+        else:
+            key_char = plaintext[i - key_len]
         shift = (ord(key_char) - ord('a')) % 26
         if char.isalpha():
             decrypted_char = chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
@@ -28,8 +35,9 @@ def decrypt_vigenere(ciphertext, key):
     return plaintext
 
 # test
-# plaintext = "halooooo"
-# key = "heru"
-# ciphertext = encrypt_vigenere(plaintext, key)
-# print(ciphertext)
-# print(decrypt_vigenere(ciphertext, key))
+plaintext = "negarapenghasilminyakmentahdidunia"
+key = "INDO"
+ciphertext = encrypt_autokey_vigenere(plaintext, key)
+print(ciphertext)
+print(decrypt_autokey_vigenere(ciphertext, key))
+
