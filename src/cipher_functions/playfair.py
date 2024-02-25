@@ -64,13 +64,13 @@ def playfairBigramTransform(bigram, keyMatrix, encrypt):
 
 # Playfair cipher
 # Character limit: only alphabetic characters, converted to upper case. J character converted to I
-def playfair(plaintext, key, encrypt = True):
+def playfair(text, key, encrypt = True):
 
-    plainList = [c for c in playfairStringReplace(plaintext)]
+    cleanedInput = [c for c in playfairStringReplace(text)]
 
     keyMatrix = playfairKeyMatrix(key)
 
-    startList = plainList.copy()
+    startList = cleanedInput.copy()
     tempList = []
     endList = []
 

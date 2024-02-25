@@ -41,18 +41,18 @@ def affineInverse(number,modulo):
 
 # Affine cipher
 # Character limit: only alphabetic characters, converted to upper case
-def affine(plaintext, multiplier, shift, encrypt = True):
+def affine(text, multiplier, shift, encrypt = True):
 
     modulo = 26 # Just upper case alphabetic characters
 
     if not encrypt:
         inverse = affineInverse(multiplier,modulo)
     
-    plainList = [(ord(c) - 65) for c in affineStringReplace(plaintext)]
+    cleanedInput = [(ord(c) - 65) for c in affineStringReplace(text)]
 
     # Encryption: multiplier * char + shift
     # Decryption: inverse(multipler) * (char - shift)
-    resultList = [ chr((multiplier * c + shift) % 26 + 65) if encrypt else chr((inverse * (c - shift)) % 26 + 65) for c in plainList]
+    resultList = [ chr((multiplier * c + shift) % 26 + 65) if encrypt else chr((inverse * (c - shift)) % 26 + 65) for c in cleanedInput]
 
     return "".join(resultList)
 
