@@ -21,16 +21,7 @@ def vigenere_cipher():
         key = request.form["key"]
         print(key)
         inputtext = request.form["inputtext"]
-        file = request.files["file"]
-        if file:
-            UPLOAD_FOLDER = 'uploads'
-            if not os.path.exists(UPLOAD_FOLDER):
-                os.makedirs(UPLOAD_FOLDER)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            
-            file.save(file_path)
-            with open(file_path, 'r') as f:
-                inputtext = f.read()
+        
         if request.form["options"] == "e":
             from cipher_functions.vigenere import vigenere
             res = vigenere(inputtext, key, True)
@@ -90,16 +81,6 @@ def playfair_cipher():
         res = ''
         key = request.form["key"]
         inputtext = request.form["inputtext"]
-        file = request.files["file"]
-        if file:
-            UPLOAD_FOLDER = 'uploads'
-            if not os.path.exists(UPLOAD_FOLDER):
-                os.makedirs(UPLOAD_FOLDER)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            
-            file.save(file_path)
-            with open(file_path, 'r') as f:
-                inputtext = f.read()
         
         if request.form["options"] == "e":
             from cipher_functions.playfair import playfair
@@ -120,16 +101,7 @@ def affine_cipher():
         shift = int(request.form["shift"])
         multiplier = int(request.form["multiplier"])
         inputtext = request.form["inputtext"]
-        file = request.files["file"]
-        if file:
-            UPLOAD_FOLDER = 'uploads'
-            if not os.path.exists(UPLOAD_FOLDER):
-                os.makedirs(UPLOAD_FOLDER)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            
-            file.save(file_path)
-            with open(file_path, 'r') as f:
-                inputtext = f.read()
+        
         if request.form["options"] == "e":
             from cipher_functions.affine import affine
             res = affine(inputtext, multiplier, shift)
@@ -148,16 +120,7 @@ def product_cipher():
         inputtext = request.form["inputtext"]
         length = int(request.form["length"])
         key = request.form["key"]
-        file= request.files["file"]
-        if file:
-            UPLOAD_FOLDER = 'uploads'
-            if not os.path.exists(UPLOAD_FOLDER):
-                os.makedirs(UPLOAD_FOLDER)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            
-            file.save(file_path)
-            with open(file_path, 'r') as f:
-                inputtext = f.read()
+        
         if request.form["options"] == "e":
             from cipher_functions.transposition import transposition
             from cipher_functions.vigenere import vigenere
@@ -179,16 +142,7 @@ def autokey_vigenere():
         res = ''
         key = request.form["key"]
         inputtext = request.form["inputtext"]
-        file = request.files["file"]
-        if file:
-            UPLOAD_FOLDER = 'uploads'
-            if not os.path.exists(UPLOAD_FOLDER):
-                os.makedirs(UPLOAD_FOLDER)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-            
-            file.save(file_path)
-            with open(file_path, 'r') as f:
-                inputtext = f.read()
+        
         if request.form["options"] == "e":
             from cipher_functions.autokey_vigenere import autokey_vigenere
             res = autokey_vigenere(inputtext, key, True)
