@@ -1,7 +1,7 @@
 # String replacement
 # Convert to lower case and remove non-alphabetic characters
 def affineStringReplace(sentence = ""):
-    return ''.join(filter(str.isalpha, inputtext.lower()))
+    return ''.join(filter(str.isalpha, sentence.lower()))
 
 # Find greatest common divisor
 def affineGCD(num1, num2):

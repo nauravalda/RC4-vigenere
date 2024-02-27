@@ -4,7 +4,7 @@ def playfairStringReplace(sentence = "", isKey = False):
     # 2. Remove letter J and returns unique letter list if isKey is true
     # 3. Change letter J to I and returns if isKey is false
 
-    substitution = ''.join(filter(str.isalpha, sentence.lower().replace('J','') if isKey else sentence.lower().replace('J','I')))
+    substitution = ''.join(filter(str.isalpha, sentence.lower().replace('j','') if isKey else sentence.lower().replace('j','i')))
 
     return "".join(dict.fromkeys(substitution)) if isKey else substitution
 
