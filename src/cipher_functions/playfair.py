@@ -1,12 +1,10 @@
-import re # regex
-
 def playfairStringReplace(sentence = "", isKey = False):
 
-    # 1. Convert to upper case and remove non-alphabetic characters
+    # 1. Convert to lower case and remove non-alphabetic characters
     # 2. Remove letter J and returns unique letter list if isKey is true
     # 3. Change letter J to I and returns if isKey is false
 
-    substitution = re.sub(r'[^A-Z]', '', sentence.upper().replace('J','') if isKey else sentence.upper().replace('J','I'))
+    substitution = ''.join(filter(str.isalpha, sentence.lower().replace('j','') if isKey else sentence.lower().replace('j','i')))
 
     return "".join(dict.fromkeys(substitution)) if isKey else substitution
 
@@ -15,7 +13,7 @@ def playfairKeyMatrix(sentence = ""):
     
     letterList = playfairStringReplace(sentence,True)
 
-    refList = [c for c in "ABCDEFGHIKLMNOPQRSTUVWXYZ"]
+    refList = [c for c in "abcdefghiklmnopqrstuvwxyz"]
     endList = []
 
     for c in letterList: # insert key letter to matrix
@@ -63,7 +61,7 @@ def playfairBigramTransform(bigram, keyMatrix, encrypt):
     return
 
 # Playfair cipher
-# Character limit: only alphabetic characters, converted to upper case. J character converted to I
+# Character limit: only alphabetic characters, converted to lower case. J character converted to I
 def playfair(text, key, encrypt = True):
 
     cleanedInput = [c for c in playfairStringReplace(text)]
@@ -81,17 +79,17 @@ def playfair(text, key, encrypt = True):
         if encrypt:
             if len(startList) > 0: # Bigram complete
                 tempList.append(startList.pop(0))
-            elif tempList[0] == "X": # Bigram incomplete, first char is X
-                tempList.append("Z") 
+            elif tempList[0] == "x": # Bigram incomplete, first char is X
+                tempList.append("z") 
             else: # Bigram incomplete, first char not X
-                tempList.append("X")
+                tempList.append("x")
         else:
             tempList.append(startList.pop(0))
 
         # Check if duplicate
         if encrypt and tempList[0] == tempList[1]:
             startList.insert(0,tempList[1])
-            tempList[1] = "X" if tempList[0] != "X" else "Z" # Use Z if bigram is previously XX
+            tempList[1] = "x" if tempList[0] != "x" else "z" # Use Z if bigram is previously XX
         
         playfairBigramTransform(tempList,keyMatrix,encrypt) # Transform bigram (plaintext <-> cipher)
 

@@ -1,9 +1,7 @@
-import re # regex
-
 # String replacement
-# Convert to upper case and remove non-alphabetic characters
+# Convert to lower case and remove non-alphabetic characters
 def affineStringReplace(sentence = ""):
-    return re.sub(r'[^A-Z]', '', sentence.upper())
+    return ''.join(filter(str.isalpha, sentence.lower()))
 
 # Find greatest common divisor
 def affineGCD(num1, num2):
@@ -40,19 +38,19 @@ def affineInverse(number,modulo):
     return affineBezout(number,modulo,affineGCD(number,modulo))[0]
 
 # Affine cipher
-# Character limit: only alphabetic characters, converted to upper case
+# Character limit: only alphabetic characters, converted to lower case
 def affine(text, multiplier, shift, encrypt = True):
 
-    modulo = 26 # Just upper case alphabetic characters
+    modulo = 26 # Just lower case alphabetic characters
 
     if not encrypt:
         inverse = affineInverse(multiplier,modulo)
     
-    cleanedInput = [(ord(c) - 65) for c in affineStringReplace(text)]
+    cleanedInput = [(ord(c) - 97) for c in affineStringReplace(text)]
 
     # Encryption: multiplier * char + shift
     # Decryption: inverse(multipler) * (char - shift)
-    resultList = [ chr((multiplier * c + shift) % 26 + 65) if encrypt else chr((inverse * (c - shift)) % 26 + 65) for c in cleanedInput]
+    resultList = [ chr((multiplier * c + shift) % 26 + 97) if encrypt else chr((inverse * (c - shift)) % 26 + 97) for c in cleanedInput]
 
     return "".join(resultList)
 
