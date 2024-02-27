@@ -43,8 +43,9 @@ def affine(text, multiplier, shift, encrypt = True):
 
     modulo = 26 # Just lower case alphabetic characters
 
-    if not encrypt:
-        inverse = affineInverse(multiplier,modulo)
+    inverse = affineInverse(multiplier,modulo)
+    if inverse is None:
+        return None
     
     cleanedInput = [(ord(c) - 97) for c in affineStringReplace(text)]
 
