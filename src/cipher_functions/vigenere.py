@@ -14,16 +14,15 @@ def vigenere(inputtext, key, encrypt=True):
             else:
                 decrypted_char = chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
                 outputtext += decrypted_char
-    return outputtext.upper()
+    return outputtext
 
-# test
-# file_path = "D:/Coll Things/Semester 6/KRIPTO/classic-ciphers/src/cipher_functions/test.txt"
-# file = open(file_path, "r")
-# text = file.read()
-# file.close()
-# print(text)
-# print(vigenere(text, "kripto", True))
-# print(vigenere(vigenere(text, "kripto", True), "kripto", False))
+if __name__ == '__main__':
+    plain2 = "gacor rEk1"
+    key = "INDO"
+    print("Key: ", key)
+    print("Plain: ", plain2, " -> ", vigenere(vigenere(plain2, key, True), key, False))
+    print("Ciphertext: ", vigenere(plain2, key, True))
+    print("Decrypted: ", vigenere(vigenere(plain2, key, True), key, False))
 
 
 

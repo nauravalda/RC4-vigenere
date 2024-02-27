@@ -1,3 +1,5 @@
+import vigenere
+
 # Transposition cipher
 # Character limit: only alphabetic characters, converted to lower case.
 # If text length is not multiple of key length, letter "X"-s will be padded to text until text length is multiple of key length
@@ -28,13 +30,17 @@ if __name__ == '__main__':
     plain = "sistem dan teknologi informasi itb"
     plain2 = "gacor rEk1"
     length = 6
+    key = "INDO"
 
-    print("k (chunk length): ", length)
+    print("Vigenere key: ", key)
+    print("Transposition k (chunk length): ", length)
 
-    print("\nPlain: ", plain, " -> ", transposition(transposition(plain, length), length, False))
-    print("Cipher: ", transposition(plain, length))
-    print("Decrypted: ", transposition(transposition(plain, length), length, False))
-
-    print("\nPlain: ", plain2, " -> ", transposition(transposition(plain2, length), length, False))
+    print("\nTransposition cipher test")
+    print("Plain: ", plain2, " -> ", transposition(transposition(plain2, length), length, False))
     print("Cipher: ", transposition(plain2, length))
     print("Decrypted: ", transposition(transposition(plain2, length), length, False))
+
+    print("\nProduct cipher test")
+    print("Plain: ", plain, " -> ", transposition(transposition(plain, length), length, False))
+    print("Cipher: ", transposition(vigenere.vigenere(plain, key), length))
+    print("Decrypted: ", vigenere.vigenere(transposition(transposition(vigenere.vigenere(plain, key), length), length, False), key, False))

@@ -23,7 +23,7 @@ def autokey_vigenere(inputtext, key, encrypt=True):
             if char.isalpha():
                 decrypted_char = chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
                 outputtext += decrypted_char
-    return outputtext.upper()
+    return outputtext
 
 # test
 plaintext = "negarapenghasilminyakmentahdidunia"
