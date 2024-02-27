@@ -10,7 +10,7 @@ def transposition(text, keyLength, encrypt = True):
             return None
         else: # Add padding
             for i in range(keyLength - (len(cleanedText) % keyLength)):
-                cleanedText += "X"
+                cleanedText += "x"
     
     chunkLength = keyLength if encrypt else len(cleanedText) // keyLength # Determine length of chunks
     chunkList = [ cleanedText[startPos:startPos+chunkLength] for startPos in range(0,len(cleanedText),chunkLength) ] # split text into chunks
