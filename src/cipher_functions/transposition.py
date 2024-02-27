@@ -1,11 +1,9 @@
-import re # regex
-
 # Transposition cipher
-# Character limit: only alphabetic characters, converted to upper case.
+# Character limit: only alphabetic characters, converted to lower case.
 # If text length is not multiple of key length, letter "X"-s will be padded to text until text length is multiple of key length
 def transposition(text, keyLength, encrypt = True):
 
-    cleanedText = re.sub(r'[^A-Z]', '', text.upper())
+    cleanedText = ''.join(filter(str.isalpha, text.lower()))
 
     if len(cleanedText) % keyLength > 0: # Check text length
         if not encrypt: # Cipher text must be multiple of key length
