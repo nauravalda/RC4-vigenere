@@ -6,7 +6,7 @@ Aplikasi implementasi beberapa *cipher* klasik dengan Web GUI.
 - *Vigenere cipher*
 - *Extended vigenere cipher*
 - *Playfair cipher*
-- *Product cipher*: Kombinasi vigenere *cipher• dan *cipher* transposisi berbasis kolom
+- *Product cipher*: Kombinasi vigenere *cipher* dan *cipher* transposisi berbasis kolom
 - *Affine cipher*
 - *Autokey vigenere cipher*
 
