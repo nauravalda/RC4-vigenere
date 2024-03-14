@@ -1,4 +1,4 @@
-# RC4 cipher with vigenere-algorithm-reinforced PRGA
+# RC4 cipher with vigenere-algorithm-enhanced PRGA
 # 
 # Inputs:
 # - Plaintext/ciphertext as byte array
@@ -33,6 +33,7 @@ def rc4(text, key, encrypt=True):
 
     return cipher
 
+# Demo
 if __name__ == '__main__':
     from binascii import hexlify
     plain = bytearray("Plaintext",'utf-8')
@@ -40,3 +41,19 @@ if __name__ == '__main__':
     enc = rc4(plain,key)
     print(hexlify(plain).decode('ascii').upper())
     print(rc4(enc,key,False).decode())
+    import sys
+    if len(sys.argv) > 1:
+        f = open(sys.argv[1], 'rb')
+        plain = memoryview(f.read())
+        enc = rc4(plain,key)
+        fe = open("enc.jpg","wb")
+        fe.write(enc)
+        fe.close()
+        f.close()
+        f = open("enc.jpg","rb")
+        cipher = memoryview(f.read())
+        dec = rc4(cipher,key)
+        fd = open("dec.jpg","wb")
+        fd.write(dec)
+        fd.close()
+        f.close()
