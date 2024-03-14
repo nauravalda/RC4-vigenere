@@ -39,7 +39,11 @@ if __name__ == '__main__':
     plain = bytearray("Plaintext",'utf-8')
     key = bytes("Key",'utf-8')
     enc = rc4(plain,key)
+    print(enc.hex().upper())
     print(hexlify(plain).decode('ascii').upper())
+    cipher = "6674A3935EED709354"
+    dec = bytes.fromhex(cipher)
+    print(rc4(dec,key,False).decode())
     print(rc4(enc,key,False).decode())
     import sys
     if len(sys.argv) > 1:
