@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, send_file
 import os
 import base64
-from binascii import hexlify
 from cipher_functions.rc4_vigenere import rc4
 
 
