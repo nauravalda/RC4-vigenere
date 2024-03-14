@@ -13,7 +13,7 @@ Program modifikasi RC4 dengan konsep Extended Vigenere Cipher berbasis web.
 - Pasang Python versi 3.10 ke atas
 - Pasang modul `Flask` menggunakan perintah `pip install flask`
 - Unduh atau lakukan kloning pada repo ini
-- Buka folder repo ini dan jalankan perintah berikut:
+- Buka folder `src` pada repo ini dan jalankan perintah berikut:
 ```bash
 python3 app.py
 ```
