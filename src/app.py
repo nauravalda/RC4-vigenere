@@ -40,7 +40,8 @@ def rc4_vigenere():
                 plain = bytearray(inputtext, 'utf-8')
                 enc = rc4(plain, key_b)
                 res = enc.hex().upper()
-            return render_template("rc4_vigenere.html", res=res, key=key, inputtext=inputtext, mode="e")
+                b64 = base64.b64encode(res.encode()).decode()
+            return render_template("rc4_vigenere.html", res=res, key=key, inputtext=inputtext,b64=b64, mode="e")
         else:
             if file:
                 filename = file.filename.split(".")[0]
